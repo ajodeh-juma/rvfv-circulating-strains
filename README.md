@@ -30,13 +30,13 @@ Follow](https://img.shields.io/twitter/follow/john_juma.svg?style=social)](https
 <!-- TODO nf-core: Add a brief overview of what the pipeline does and how it works -->
 
 **rvfvphylo** is a bioinformatics pipeline for characterizing circulating and vaccine strains
-of the Rift Valley fever virus**.
+of the Rift Valley fever virus.
 The pipeline has 3 main subworkflows:
 
-1. rvfvcirculatingstrains: This subworkflow performs a comparative genetic and evolutionary
+1. **rvfvcirculatingstrains**: This subworkflow performs a comparative genetic and evolutionary
    analysis for the 3 segments of RVFV against the commonly used vaccine strains
    (Smithburn, MP-12 and Clone-13)
-2. rvfvmutationalprofiling: This subworkflow performs mutational profiling for
+2. **rvfvmutationalprofiling**: This subworkflow performs mutational profiling for
    the 3 segments using the ZH548 strain.
 
 The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool

@@ -1,4 +1,4 @@
-# ![rvfvphylo](docs/images/rvfvphylo_logo.png)
+<!-- # ![rvfvphylo](docs/images/rvfvphylo_logo.png) -->
 
 
 - [Introduction](#introduction)

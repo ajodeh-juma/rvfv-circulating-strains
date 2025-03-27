@@ -1,0 +1,42 @@
+# You can use this file to create a conda environment for this pipeline:
+#   conda env create -f environment.yml
+name: rvfv-phylo
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - biopython=1.83
+  - bcftools
+  - hyphy=2.5.38
+  - iqtree=2.0.3
+  - mafft=7.520
+  - modeltest-ng=0.1.7
+  - nextflow=23.04
+  - pandas=1.4.3
+  - pycountry=22.3.5
+  - python=3.8.13
+  - python-dateutil=2.8.2
+  - python_abi=3.8
+  - pytz=2022.1
+  - r-argparse=2.2.2
+  - r-base=4.1.3
+  - r-countrycode=1.5.0
+  - r-dplyr=1.0.9
+  - r-ggplot2=3.3.6
+  - r-ggrepel=0.9.1
+  - r-maps=3.4.0
+  - r-r.oo=1.25.0
+  - r-r.utils=2.12.2
+  - r-rstudioapi=0.13
+  - r-tidygeocoder=1.0.5
+  - seqkit=2.4.0
+  - seqmagick=0.8.6
+  - snipit=1.1.2
+  - snp-sites=2.5.1
+  - snpsift=4.3.1t
+  - treetime=0.9.3
+  - trimal=1.4.1
+  # - pip
+  # - pip:
+  #   - pyfasta

@@ -1,0 +1,443 @@
+strain,country,location,host,date
+M47/08,South Africa,Bela-Bela,bovine,2008-04-01
+M39/08,South Africa,Mbombela,Buffalo calf,2008-06-01
+M37/08,South Africa,Hoedspruit,Buffalo calf,2008-04-07
+M85/08,South Africa,Centurion,Bovine calf,2008-05-07
+M84/08,South Africa,Centurion,Bovine,2008-05-07
+M80/08/2,South Africa,Centurion,Bovine,2008-05-07
+M66/09,South Africa,Modderfontein,Bovine,2009-05-01
+M260/09,South Africa,Upington,Bovine,2009-04-01
+M259/09,South Africa,Upington,Bovine,2009-04-01
+M247/09,South Africa,Upington,Ovine,2009-04-01
+M127/09,South Africa,Groenhof,Bovine,2009-03-01
+M33/10,South Africa,Middelburg,Ovine,2010-07-15
+M29/10,South Africa,Pretoria,Bovine,2010-07-25
+M25/10,South Africa,Bultfontein,Ovine,2010-03-29
+M12/10,South Africa,Bultfontein,Ovine,2010-03-29
+M19/10,South Africa,Heldefontein,Ovine,2010-02-18
+M16/10,South Africa,Bultfontein,Ovine,2010-03-29
+M06/10,South Africa,Sterkfontein,Bovine,2010-03-26
+M21/10,South Africa,Bloemfontein,Ovine,2010-03-28
+Namibia_2010,Namibia,Karasburg,ovine,2010-07-30
+KEN/Bar-032/07,Kenya,Baringo,Homo sapiens,2007-02-06
+KEN/Bar-Msq/187-09/07,Kenya,Baringo,mosquito,2007-02-13
+KEN/Bar-Msq,Kenya,Kiserian,mosquito,2007-02-13
+KEN/KLF-Msq/091/07,Kenya,Kilifi,mosquito,2007-01-13
+KEN/KLF-Msq,Kenya,Kilifi,mosquito,2007-01-08
+KEN/Gar-Msq/131B-04/06,Kenya,Garissa,mosquito,2006-12-29
+KEN/Gar-Msq,Kenya,Garissa,mosquito,2006-12-29
+TAN/Dod-002/07,Tanzania,Dodoma,Homo sapiens,2007-03-01
+TAN/Tan-001/07,Tanzania,Tanga,Homo sapiens,2007-02-10
+KEN/Bar-035/07,Kenya,Kiserian,Homo sapiens,2007-02-07
+KEN/Mal-032/07,Kenya,Malindi,Homo sapiens,2007-01-07
+KEN/Kil-006/07,Kenya,Kilifi,Homo sapiens,2007-01-03
+KEN/Gar-008/06,Kenya,Garissa,Homo sapiens,2006-12-25
+KEN/Gar-004/06,Kenya,Garissa,Homo sapiens,2006-12-24
+KEN/Gar-Msq131B-04/06,Kenya,Garissa,mosquito,2006-12-29
+KEN/KLF-Msq091/07,Kenya,Kilifi,mosquito,2007-01-13
+KEN06-ELH131B08,Kenya,Garissa,mosquito,2006-12-21
+KEN07-KLF112,Kenya,Kilifi,mosquito,2007-01-13
+KEN07-KUR340,Kenya,Garissa,mosquito,2007-01-12
+Kenya 83 (21445),Kenya,Ruiru,Aedes macintoshi,1983-12-05
+Kenya 9800523,Kenya,Garissa,human sera,1998-01-04
+2007000324,Tanzania,Dodoma,Homo sapiens,2007-02-08
+2007000323,Tanzania,Dodoma,Homo sapiens,2007-02-08
+2007000253,Kenya,Garissa,mosquito,2006-12-29
+2007000234,Kenya,Garissa,mosquito,2007-01-01
+2007000260,Kenya,Garissa,mosquito,2006-12-31
+Namibia_2011,Namibia,Oshikoto,springbok,2011-07-30
+201601287,Uganda,Kabale,Homo sapiens,2016-03-15
+201601292,Uganda,Kamuganguzi,Homo sapiens,2016-03-15
+201601502,Uganda,Kabale,Homo sapiens,2016-03-15
+Saudi 2000-10911,Saudi Arabia,Jizan,human sera,2000-09-10
+SAUDI 200010901,Saudi Arabia,Jizan,human sera,2000-09-13
+SA01-1322,Saudi Arabia,Aseer,Aedes vexans arabiensis,2001-12-08
+Kenya-128b-15,Kenya,Garissa,Aedes ochraceus,2006-12-15
+Lunyo,Uganda,Lunyo,mosquito,1955-11-18
+CAR-R1622,Central African Republic,Bangui,human sera,1985-12-10
+CAR R1662,Central African Republic,Bangui,human sera,1985-12-10
+HB1752,Central African Republic,Bangui,Homo sapiens,1986-12-24
+CAR R1752,Central African Republic,Bangui,Homo sapiens,1986-12-24
+ZINGA J83 R1,Central African Republic,Nana Mambere,human sera,1969-01-01
+73HB1230,Central African Republic,Ombella Mpoko,human sera,1973-11-12
+Hv-B375,Central African Republic,Mbaiki,human sera,1985-10-02
+Zinga,Central African Republic,Bangui,human sera,1969-10-02
+ArB1976,Central African Republic,Bangui,human sera,1969-10-02
+73HB1449,Central African Republic,Ombella Mpoko,human sera,1973-12-10
+74HB59,Central African Republic,Ombella Mpoko,human sera,1974-01-09
+SA-51 (Van Wyck),South Africa,Boshof,ovine,1951-04-09
+M1955,South Africa,Free State,mosquito,1955-02-09
+KX944831,South Africa,Free State,mosquito,1955-02-09
+Kakamas,South Africa,Siyanda,sheep,2009-09-10
+M1975/Bov,South Africa,Natal,bovine,1975-02-10
+SA-75,South Africa,Randofontein,human sera,1975-05-08
+M35/74,South Africa,Eshowe,human,1974-09-03
+M57/74,South Africa,Eshowe,human,1974-09-15
+272655,Mauritania,Nouakchott,human,2015-09-15
+272660,Mauritania,Maghta Lahjar,human,2015-11-03
+272659,Mauritania,Kiffa,human,2015-10-09
+OS-1,Mauritania,Keur Macene,human sera,1987-10-09
+OS-3,Mauritania,Selibaby,human sera,1987-10-12
+OS-8,Mauritania,Kiffa,human sera,1987-10-14
+OS-9,Mauritania,Ayoun el Atrous,human sera,1987-11-05
+BJ01,Angola,Luanda,Homo sapiens,2016-07-22
+ZH-548,Egypt,Sharqiya,Homo sapiens,1977-11-07
+ZM-657,Egypt,Sharqiya,mosquito,1978-10-13
+ZH-501,Egypt,Sharqiya,human sera,1977-10-10
+ZC-3349,Egypt,Asyut,bovine,1978-10-16
+T-46 (228113),Egypt,Sharqiya,Aedes taeniorhyncus,1977-11-12
+T1,Egypt,Sharqiya,Culex pipiens,1977-10-10
+2008/00101,Mayotte,Sada,Homo sapiens,2008-03-20
+2008/00099,Mayotte,Bandraboua,Homo sapiens,2008-02-21
+M48/08,Madagascar,Antsirabe,bovine,2008-02-20
+MgH824,Madagascar,Moramanga,bovine,1979-01-01
+Ar811MAD79,Madagascar,Moramanga,bovine,2008-03-10
+An1000MAD91,Madagascar,Tanjombato,bovine,1991-02-07
+An999MAD91,Madagascar,Tanjombato,bovine,1991-02-07
+An991MAD91,Madagascar,Ivato,bovine,1991-01-28
+200803170,Madagascar,Manjakandriana,bovine,2008-03-24
+200803169,Madagascar,Antsirabe,bovine,2008-02-20
+200803168,Madagascar,Miarinarivo,bovine,2008-02-20
+200803167,Madagascar,Antananarivo,bovine,1991-02-07
+200803166,Madagascar,Antananarivo,Homo sapiens,1991-02-07
+200803165,Madagascar,Manjakandriana,Homo sapiens,2008-03-26
+200803164,Madagascar,Ankazobe,Homo sapiens,2008-03-09
+200803163,Madagascar,Anjozorobe,Homo sapiens,2008-02-22
+200803162,Madagascar,Taolagnaro,Homo sapiens,2008-01-30
+Sudan B-2007,Sudan,White Nile,Human sera,2007-10-17
+Sudan 1-2007,Sudan,Khartoum,Homo sapiens,2007-10-30
+Sudan 77-2007,Sudan,Khartoum,Homo sapiens,2007-11-05
+Sudan 30-2010,Sudan,El Gezira,Homo sapiens,2010-10-14
+Sudan 7-2010,Sudan,El Gezira,Homo sapiens,2010-10-05
+Sudan SP-2007,Sudan,White Nile,Homo sapiens,2007-11-14
+Sudan 133-2007,Sudan,Khartoum,Homo sapiens,2007-11-14
+Sudan 86-2010,Sudan,El Gezira,Homo sapiens,2010-10-23
+Sudan 85-2010,Sudan,El Gezira,Homo sapiens,2010-10-23
+Sudan 34-2010,Sudan,El Gezira,Homo sapiens,2010-10-14
+Sudan 28-2010,Sudan,El Gezira,Homo sapiens,2010-10-14
+Sudan 4-2010,Sudan,El Gezira,Homo sapiens,2010-10-05
+Sudan 2V-2007,Sudan,White Nile,Homo sapiens,2007-10-24
+201707023,Uganda,Kiboga,Homo sapiens,2017-11-16
+201707024,Uganda,Mityana,Homo sapiens,2017-11-21
+201707025,Uganda,Sembabule,Homo sapiens,2017-11-23
+Ken 199800523,Kenya,Garissa,Homo sapiens,1998-01-04
+2007000250,Kenya,Garissa,mosquito,2006-12-29
+2007000245,Kenya,Garissa,mosquito,2006-12-29
+ZH548EGY77,Egypt,Sharqiya,Homo sapiens,1977-11-07
+ZH501EGY77,Egypt,Sharqiya,Homo sapiens,1977-10-10
+Entebbe,Uganda,Entebbe,human sera,1944-05-16
+SNS,Uganda,Entebbe,human sera,1944-05-16
+Kenya 57 (Rintoul),Kenya,Kabete,ovine,1951-01-01
+LunyoUGA55,Uganda,Lunyo,mosquito,1955-11-18
+2007003081,Kenya,Embu,bovine,2007-02-27
+2007000473,Kenya,Kajiado,ovine,2007-01-26
+H2 MAU 03,Mauritania,Tagant,Homo sapiens,2003-09-29
+H1 MAU 03,Mauritania,Assaba,Homo sapiens,2003-11-03
+ArB1986,Central African Republic,Lobaye,Aedes palpalis,1969-06-12
+B1143KEN77,Kenya,,mosquito,1977-01-01
+B314KEN62,Kenya,,mosquito,1962-01-01
+0212-08,Madagascar,Tolagnaro,human,2008-01-30
+0406-08,Madagascar,Miarinarivo,bovine,2008-02-20
+0413-08,Madagascar,Antsirabe,bovine,2008-02-20
+0427-08,Madagascar,Anjozorobe,human,2008-02-22
+0428-08,Madagascar,Anjozorobe,human,2008-02-15
+0448-08,Madagascar,Anjozorobe,human,2008-02-26
+0619-08,Madagascar,Ankazobe,human,2008-03-09
+0682-08,Madagascar,Ambatondrazaka,human,2008-03-12
+0683-08,Madagascar,Ambatondrazaka,human,2008-03-12
+0684-08,Madagascar,Ambatondrazaka,human,2008-03-12
+0693-08,Madagascar,Amparafaravola,human,2008-03-11
+0776-08,Madagascar,Ambatondrazaka,human,2008-03-14
+0845-08,Madagascar,Manjakandriana,human,2008-03-23
+0846-08,Madagascar,Manjakandriana,human,2008-03-23
+0847-08,Madagascar,Manjakandriana,human,2008-03-23
+0848-08,Madagascar,Manjakandriana,human,2008-03-23
+0849-08,Madagascar,Manjakandriana,human,2008-03-23
+0850-08,Madagascar,Manjakandriana,human,2008-03-23
+0851-08,Madagascar,Manjakandriana,human,2008-03-23
+0852-08,Madagascar,Manjakandriana,human,2008-03-23
+0853-08,Madagascar,Manjakandriana,human,2008-03-23
+0854-08,Madagascar,Manjakandriana,human,2008-03-23
+0855-08,Madagascar,Manjakandriana,bovine,2008-03-24
+0863-08,Madagascar,Antananarivo,human,2008-03-25
+0878-08,Madagascar,Amparafaravola,human,2008-03-26
+0879-08,Madagascar,Manjakandriana,human,2008-03-26
+0889-08,Madagascar,Manjakandriana,human,2008-03-26
+0892-08,Madagascar,Manjakandriana,human,2008-03-26
+0895-08,Madagascar,Manjakandriana,human,2008-03-26
+0897-08,Madagascar,Manjakandriana,human,2008-03-26
+1464-08,Madagascar,Tolagnaro,human,2008-03-28
+1585-08,Madagascar,Antsiranana,caprine,2008-04-13
+1586-08,Madagascar,Antavy Atsimo,human,2008-04-15
+1627-08,Madagascar,Ambalavao,bovine,2008-04-18
+1695-08,Madagascar,Antsiranana,ovine,2008-04-20
+1730-08,Madagascar,Fianarantsoa,bovine,2008-04-25
+2032-08,Madagascar,Amparafaravola,human,2008-05-25
+2033-08,Madagascar,Amparafaravola,human,2008-04-29
+2034-08,Madagascar,Amparafaravola,human,2008-04-23
+6510-08,Madagascar,Fianarantsoa ,bovine,2008-11-28
+6546-08,Madagascar,Fianarantsoa ,bovine,2008-11-29
+6547-08,Madagascar,Fianarantsoa ,bovine,2008-12-01
+6660-08,Madagascar,Fianarantsoa ,human,2008-12-12
+SPU44/85,Zambia,Chisamba,human,1985-01-01
+2018/MRT/3,Mauritania,Trarza,mosquito,2018-12-08
+SH328056,Senegal,Fatick,Homo sapiens,2020-01-01
+SH327052,Senegal,Matam,Homo sapiens,2020-01-01
+SH326064,Senegal,Dakar,Homo sapiens,2020-01-01
+ArD38661,Senegal,Kedougou,mosquito,1983-01-01
+HD21955,Senegal,Kedougou,Homo sapiens,1975-01-01
+SA51,South Africa,Boshof,ovine,1951-04-10
+SPU77/04,Namibia,Caprivi,Homo sapiens,2004-01-01
+Ar74,South Africa,Free State,mosquito,1955-01-01
+Ar118,South Africa,Free State,mosquito,1955-01-01
+Ar 118,South Africa,Free State,mosquito,1955-01-01
+An1830,South Africa,Free State,mosquito,1955-02-01
+H1825,South Africa,Steinkopf,Homo sapiens,1975-02-01
+H1739,South Africa,Karoo,Homo sapiens,1975-02-01
+35/74,South Africa,Free State,ovine,1974-02-01
+56/74_4255,South Africa,Free State,ovine,1974-01-01
+Ar20364,South Africa,Natal,mosquito,1981-01-01
+Ar12568,South Africa,Standerton,mosquito,1971-01-01
+SPU52/99/1,South Africa,Limpopo,African buffalo,1999-01-01
+SPU52/99/2,South Africa,Limpopo,African buffalo,1999-01-01
+SPU52/99/3,South Africa,Limpopo,African buffalo,1999-01-01
+SPU52/99/5,South Africa,Limpopo,African buffalo,1999-01-01
+SPU86/10,South Africa,Northern cape,Homo sapiens,2010-01-01
+SPU86/09,South Africa,Northern cape,bovine,2009-01-01
+SPU404/09,South Africa,Eastern cape,human,2009-01-01
+SA404/09,South Africa,Free state,human,2009-01-01
+SA423/10,South Africa,Bultfontein,human,2010-01-01
+SA389/11,South Africa,Eastern cape,Homo sapiens,2011-01-01
+SA359/11,South Africa,Eastern cape,Homo sapiens,2011-01-01
+SA342/11,South Africa,Eastern cape,Homo sapiens,2011-01-01
+SA67/11,South Africa,Eastern cape,Homo sapiens,2011-01-01
+SA295/11,South Africa,Eastern cape,Homo sapiens,2011-01-01
+SA320/11,South Africa,Eastern cape,Homo sapiens,2011-01-01
+SA327/11,South Africa,Eastern cape,Homo sapiens,2011-01-01
+SA494/11,South Africa,Eastern cape,Homo sapiens,2011-01-01
+SA354/11,South Africa,Eastern cape,Homo sapiens,2011-01-01
+SA1797/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1601/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1518/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1457/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1405/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1372/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1329/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1282/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1224/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1171/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1143/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1098/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1095/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1167/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1092/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1081/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1061/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA918/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA770/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA746/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA705/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA665/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA638/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA635/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA633/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA632/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA591/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA538/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA535/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA509/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA484/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA482/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA472/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA424/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA420/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA414/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA395/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA394/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA377/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA344/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA336/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA322/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA317/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA287/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA257/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA250/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA226/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA225/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA220/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA206/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA165/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA135/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA128/10,South Africa,Free state,Homo sapiens,2010-01-01
+SPU126/10,South Africa,Eastern cape,Homo sapiens,2010-01-01
+SA122/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1221/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA110/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA106/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA103/10,South Africa,Free state,Homo sapiens,2010-01-01
+SPU100/10,South Africa,Eastern cape,Homo sapiens,2010-01-01
+SPU97/10,South Africa,Eastern cape,Homo sapiens,2010-01-01
+SA95/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA93/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA85/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA79/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA76/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA71/10,South Africa,Free state,Homo sapiens,2010-01-01
+SPU68/10,South Africa,Northern cape,Homo sapiens,2010-01-01
+SA62/10,South Africa,Free state,Homo sapiens,2010-01-01
+SPU59/10,South Africa,Northern cape,Homo sapiens,2010-01-01
+SA1796/10,South Africa,Free state,Homo sapiens,2010-01-01
+SPU162/10,South Africa,Northern cape,Homo sapiens,2010-01-01
+SPU105/10,South Africa,Northern cape,Homo sapiens,2010-01-01
+SA1222/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA1094/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA982/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA573/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA276/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA275/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA184/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA129/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA373/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA54/10,South Africa,Free state,Homo sapiens,2010-01-01
+SA59/10,South Africa,Free state,Homo sapiens,2010-01-01
+SPU152/08,South Africa,Mbombela,Homo sapiens,2008-01-01
+SA152/08,South Africa,Free state,Homo sapiens,2008-01-01
+SPU142/08,South Africa,Bela-Bela,bovine,2008-01-01
+J40/6,South Africa,Mpumalanga,buffalo,2008-01-01
+SPU77/08,South Africa,Mpumalanga,buffalo,2008-01-01
+SA52/08,South Africa,Gauteng,Homo sapiens,2008-01-01
+RFV-Moz-Gob-T9-2014,Mozambique,Goba,goat,2014-03-01
+RFV-Moz-Gob-T7-2014,Mozambique,Goba,goat,2014-03-01
+MgAn990,Madagascar,Fenerive,bovine,1991-03-01
+MgAn991,Madagascar,Fenerive,bovine,1991-03-01
+MgAn1002,Madagascar,Fenerive,bovine,1991-03-01
+MgAr811,Madagascar,Andasibe,bovine,1979-01-01
+211856,Mauritania,Tawaz,Homo sapiens,2010-10-01
+211857,Mauritania,Aoujeft,Homo sapiens,2010-10-01
+211977,Mauritania,Akjoujt,Homo sapiens,2010-10-01
+227595,Mauritania,Ouad-Naga,Homo sapiens,2012-09-09
+227598,Mauritania,Tagant,Homo sapiens,2012-10-01
+227601,Mauritania,Brakna,Homo sapiens,2012-10-01
+227602,Mauritania,Trarza,Homo sapiens,2012-10-01
+227603,Mauritania,Assaba,Homo sapiens,2012-10-01
+227608,Mauritania,Hodh-El-Gharbi,Homo sapiens,2012-10-01
+OS-4,Mauritania,Keur Macene,Homo sapiens,1987-10-14
+B314,Kenya,Makueni,bovine,1962-01-01
+KEN56/B2653/IB8,Kenya,Kiambu,bovine,1963-01-01
+Kenya 56 (IB8),Kenya,Kiambu,bovine,1963-01-01
+Kitale1840,Kenya,Kitale,bovine,1964-01-01
+B674,Kenya,Kiambu,bovine,1963-01-01
+KEN57 Rintoul,Kenya,Kabete,ovine,1951-01-01
+B1143,Kenya,Mombasa,bovine,1977-01-01
+B309,Kenya,Mombasa,bovine,1977-01-01
+SPU2/98/1,Kenya,Garissa,Homo sapiens,1998-02-01
+SPU384/97/1,Kenya,Garissa,Homo sapiens,1997-12-01
+SPU22/07/118,Kenya,Garissa,Homo sapiens,2007-01-01
+SPU22/07/125,Kenya,Garissa,Homo sapiens,2007-01-01
+SPU22/07/129,Kenya,Garissa,Homo sapiens,2007-01-01
+SPU22/07/4,Kenya,Garissa,Homo sapiens,2007-01-01
+SPU2/98/9,Kenya,Garissa,caprine,1998-01-01
+SPU12/99/21,Somalia,Lower shabelle,caprine,1999-01-01
+An278,Saudi Arabia,Jizan,ovine,2000-09-12
+93-Abeer,Egypt,Abeer aswan,homo sapiens,1993-01-01
+94EG Tambul,Egypt,Tamboul,ovine,1994-01-01
+95EG Cow-2509,Egypt,Tamboul,bovine,1995-01-01
+ANK-6087,Guinea,Macenta,bat,1984-01-01
+ANK-3837,Guinea,Macenta,bat,1981-01-01
+AnK3837,Guinea,Macenta,bat,1981-01-01
+ARD-38388,Burkina Faso,Fada-Ngourma,mosquito,1983-01-01
+Ar11186,Zimbabwe,Mashonaland,mosquito,1969-05-28
+VRL1548/78,Zimbabwe,Gatooma,ovine,1978-01-01
+VRL2051/76,Zimbabwe,Gatooma,Homo sapiens,1976-01-01
+VRL2373/74,Zimbabwe,Salisbury,bovine,1974-01-01
+VRL763/70,Zimbabwe,Salisbury,bovine,1970-01-01
+VRL1032/78,Zimbabwe,Gatooma,bovine,1978-01-01
+VRL1260/78,Zimbabwe,Salisbury,bovine,1978-01-01
+VRL1887/78,Zimbabwe,Salisbury,bovine,1978-01-01
+VRL1290A/78,Zimbabwe,Salisbury,bovine,1978-01-01
+VRL1290/78,Zimbabwe,Salisbury,bovine,1978-01-01
+VRL1217/78,Zimbabwe,Sinoia,ovine,1978-01-01
+VRL2354/78,Zimbabwe,Gatooma,ovine,1978-01-01
+VRL1516/78,Zimbabwe,Gatooma,ovine,1978-01-01
+VRL825/79,Zimbabwe,Salisbury,Homo sapiens,1979-01-01
+VRL1187/79,Zimbabwe,Salisbury,bovine,1979-01-01
+VRL2413/98,Zimbabwe,Salisbury,bovine,1998-01-01
+SPU204/85,Angola,Luanda,Homo sapiens,1985-01-01
+214445,Kenya,Kahawa sukari,mosquito,1983-10-01
+S35,Kenya,Mombasa,ovine,1972-01-01
+EGY-Bat-1/20,Egypt,Asyut,bat,2019-12-11
+EGY-Bat-2/20,Egypt,Asyut,bat,2019-12-11
+201902760_M|Uganda|2018,Uganda,Ibanda,Human,2018-07-23
+201902764_M|Uganda|2018,Uganda,Kampala,Human,2018-08-07
+201902763_M|Uganda|2018,Uganda,Mubende,Human,2018-07-26
+201902747_M|Uganda|2018,Uganda,Isingiro,Human,2018-07-14
+2021001358_S|Uganda,Uganda,Kampala,Human,2020-07-01
+2021000843_S|Uganda,Uganda,Kampala,Human,2020-03-01
+2020002574_S|Uganda,Uganda,Kampala,Human,2020-12-01
+2020001195_S|Uganda,Uganda,Kampala,Human,2020-07-01
+2020000159_S|Uganda,Uganda,Kampala,Human,2020-02-01
+2020000148_S|Uganda,Uganda,Kampala,Human,2020-02-01
+201902764_S|Uganda|2018,Uganda,Kampala,Human,2018-08-07
+201902754_S|Uganda|2018,Uganda,Sembabule,Human,2018-01-01
+201902750_S|Uganda|2018,Uganda,Mbarara,Human,2018-07-18
+201902750_M|Uganda|2018,Uganda,Mbarara,Human,2018-07-18
+2019000825_S|Uganda|2019,Uganda,Kampala,Human,2019-12-04
+201902745_S|Uganda|2018,Uganda,Mbarara,Human,2018-07-14
+201902745_M|Uganda|2018,Uganda,Mbarara,Human,2018-07-14
+2019000312_S|Uganda|2019,Uganda,Kampala,Human,2019-05-30
+201901671_S|Uganda,Uganda,Yumbe,Human,2019-01-01
+201902753_S|Uganda|2018,Uganda,Mbarara,Human,2018-07-20
+201902753_M|Uganda|2018,Uganda,Mbarara,Human,2018-07-20
+201902737_S|Uganda|2018,Uganda,Kampala,Human,2018-07-04
+2019000825_M|Uganda|2019,Uganda,Kampala,Human,2019-12-04
+201902734_S|Uganda|2018,Uganda,Mbarara,Human,2018-06-26
+201902734_M|Uganda|2018,Uganda,Mbarara,Human,2018-06-26
+201901671_M|Uganda,Uganda,Yumbe,Human,2019-01-01
+2020001195_M|Uganda,Uganda,Kampala,Human,2020-01-01
+2020002574_M|Uganda,Uganda,Kampala,Human,2020-01-01
+2019002754_M|Uganda|2018,Uganda,Sembabule,Human,2018-01-01
+201900877_M|Uganda|2018,Uganda,Sembabule,Human,2018-01-01
+201900879_M|Uganda|2018,Uganda,Mubende,Human,2018-01-01
+201900880_M|Uganda|2018,Uganda,Kabale,Human,2018-01-01
+201902733_M|Uganda|2018,Uganda,Mbarara,Human,2018-01-01
+201902736_M|Uganda|2018,Uganda,Sheema,Human,2018-07-09
+201902736_S|Uganda|2018,Uganda,Sheema,Human,2018-07-09
+201902760_S|Uganda|2018,Uganda,Ibanda,Human,2018-07-23
+201902763_S|Uganda|2018,Uganda,Mubende,Human,2018-07-26
+201902747_S|Uganda|2018,Uganda,Isingiro,Human,2018-07-14
+201902733_S|Uganda|2018,Uganda,Mbarara,Human,2018-01-01
+201900880_S|Uganda|2018,Uganda,Kabale,Human,2018-01-01
+201900879_S|Uganda|2018,Uganda,Mubende,Human,2018-01-01
+201900877_S|Uganda|2018,Uganda,Sembabule,Human,2018-01-01
+2021001358_L|Uganda,Uganda,Kampala,Human,2020-07-01
+2020002574_L|Uganda,Uganda,Kampala,Human,2020-12-01
+2020001195_L|Uganda,Uganda,Kampala,Human,2020-07-01
+201902764_L|Uganda|2018,Uganda,Kampala,Human,2018-08-07
+201902763_L|Uganda|2018,Uganda,Mubende,Human,2018-07-26
+201902760_L|Uganda|2018,Uganda,Ibanda,Human,2018-07-23
+201902754_L|Uganda|2018,Uganda,Sembabule,Human,2018-01-01
+201902753_L|Uganda|2018,Uganda,Mbarara,Human,2018-07-20
+201902750_L|Uganda|2018,Uganda,Mbarara,Human,2018-07-18
+201902747_L|Uganda|2018,Uganda,Isingiro,Human,2018-07-14
+201902745_L|Uganda|2018,Uganda,Mbarara,Human,2018-07-14
+201902737_L|Uganda|2018,Uganda,Kampala,Human,2018-07-04
+2019000825_L|Uganda|2018,Uganda,Kampala,Human,2019-12-04
+201901671_L|Uganda,Uganda,Yumbe,Human,2019-01-01
+201900880_L|Uganda|2018,Uganda,Kabale,Human,2018-01-01
+201900879_L|Uganda|2018,Uganda,Mubende,Human,2018-01-01
+201900877_L|Uganda|2018,Uganda,Sembabule,Human,2018-01-01
+2019000825_L|Uganda|2019,Uganda,Kampala,Human,2019-12-04
+MO-LE,Kenya,Nairobi,Human,2007-01-01
+SA579/11,Namibia,Caprivi,Human,2011-01-01
+Smithburn,Uganda,Entebbe,human,1944-05-16
+MP-12,Egypt,Sharqiya,human sera,1977-11-07
+13,Central African Republic,Ombella Mpoko,human sera,1974-01-09
+ZH-501-777,Egypt,Sharqiya,Homo sapiens,1977-10-10
+vacEGY,Egypt,Sharqiya,Homo sapiens,1977-10-10
+RVax-1,United States,,Homo sapiens,2020-02-09
+40Fp8,Spain,,ovine,2016-06-21
+RSA/OBP/RVFVClone13/LAV,Central African Republic,Ombella Mpoko,human,1974-01-09
+RSA/OBP/RVFV/Inactivated,South Africa,Free State,human,1974-01-01
+RSA/OBP/RVFVSmithburn/LAV,Uganda,Entebbe,human,1944-05-16
+rMP12-*NSs16/198,United States,,Vero cells,2017-04-10
+Clone 13,Central African Republic,Ombella Mpoko,human,1974-01-09

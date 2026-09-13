@@ -1,335 +1,485 @@
-<!-- # ![rvfvphylo](docs/images/rvfvphylo_logo.png) -->
-
-
-- [Introduction](#introduction)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Method details](#method-details)
-  - [Output](#output)
-  - [Pipeline summary](#pipeline-summary)
-  - [Citations](#citations)
-  
-
+![rvfvphylo](docs/images/rvfvphylo_logo.png)
 
 [![DOI](https://zenodo.org/badge/451463165.svg)](https://zenodo.org/badge/latestdoi/451463165)
-[![Nextflow](https://img.shields.io/badge/nextflow-%E2%89%A520.04.0-brightgreen.svg)](https://www.nextflow.io/)
-[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg)](https://bioconda.github.io/)
-[![Get help on Slack](http://img.shields.io/badge/slack-nf--core%20%23rvfvtyping-4A154B?logo=slack)](https://nfcore.slack.com/channels/rvfvtyping)
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-brightgreen.svg)](https://github.com/ajodeh-juma/rvfvtyping/blob/master/LICENSE)
-<!-- [![Docker](https://img.shields.io/docker/automated/nfcore/rvfvtyping.svg)](https://hub.docker.com/r/nfcore/rvfvtyping) -->
-<!-- [![GitHub Actions CI Status](https://github.com/nf-core/rvfvtyping/workflows/nf-core%20CI/badge.svg)](https://github.com/nf-core/rvfvtyping/actions) -->
-<!-- [![GitHub Actions Linting Status](https://github.com/nf-core/rvfvtyping/workflows/nf-core%20linting/badge.svg)](https://github.com/nf-core/rvfvtyping/actions) -->
-<!-- ![](https://img.shields.io/badge/uses-docker-blue.svg) -->
+[![Nextflow](https://img.shields.io/badge/nextflow-DSL2-brightgreen.svg)](https://www.nextflow.io/)
+[![run with conda](https://img.shields.io/badge/run%20with-conda-3EB049.svg?logo=anaconda)](https://docs.conda.io/en/latest/)
+[![run with singularity](https://img.shields.io/badge/run%20with-singularity-1D355C.svg)](https://sylabs.io/singularity/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ajodeh-juma/rvfv-circulating-strains/blob/master/LICENSE)
+[![Twitter Follow](https://img.shields.io/twitter/follow/john_juma.svg?style=social)](https://twitter.com/john_juma)
 
-[![Twitter
-Follow](https://img.shields.io/twitter/follow/john_juma.svg?style=social)](https://twitter.com/john_juma)
+## Table of contents
 
+- [Introduction](#introduction)
+- [Pipeline summary](#pipeline-summary)
+- [Requirements](#requirements)
+- [Installation](#installation)
+  - [Option A — HPC with Singularity/Apptainer (recommended)](#option-a--hpc-with-singularityapptainer-recommended)
+  - [Option B — Local installation with Conda](#option-b--local-installation-with-conda)
+- [Running on an HPC cluster (SLURM)](#running-on-an-hpc-cluster-slurm)
+- [Quick start](#quick-start)
+- [Usage](#usage)
+- [Parameters](#parameters)
+- [Output](#output)
+- [Analysis examples](#analysis-examples)
+- [Credits](#credits)
+- [Contributions and support](#contributions-and-support)
+- [Citations](#citations)
 
 ## Introduction
 
-<!-- TODO nf-core: Add a brief overview of what the pipeline does and how it works -->
+**rvfvphylo** is a [Nextflow](https://www.nextflow.io) (DSL2) bioinformatics pipeline for the
+comparative genetic and evolutionary characterization of circulating and vaccine strains of
+Rift Valley fever virus (RVFV), across its three genomic segments (S, M and L).
 
-**rvfvphylo** is a bioinformatics pipeline for characterizing circulating and vaccine strains
-of the Rift Valley fever virus.
-The pipeline has 3 main subworkflows:
+Every process is containerized, so the underlying tools (MAFFT, IQ-TREE, HyPhy, TreeTime,
+BCFtools, SnpSift, snipit, seqkit, 3SEQ, TrimAl, snp-sites and a set of R/Python helper
+scripts) never need to be installed by hand — Nextflow pulls a per-process container image
+automatically at run time when using the `docker`, `singularity` or (on most HPC systems)
+`apptainer` engine. A `conda` environment is provided as a fallback for systems where
+containers are not available.
 
-1. **rvfvcirculatingstrains**: This subworkflow performs a comparative genetic and evolutionary
-   analysis for the 3 segments of RVFV against the commonly used vaccine strains
-   (Smithburn, MP-12 and Clone-13)
-2. **rvfvmutationalprofiling**: This subworkflow performs mutational profiling for
-   the 3 segments using the ZH548 strain.
+## Pipeline summary
 
-The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool
-to run tasks across multiple compute infrastructures in a very portable manner.
-It comes with docker containers making installation trivial and results highly
-reproducible.
+The pipeline is organized into three independently runnable subworkflows, selected with
+`--subworkflow`:
+
+1. **`rvfvcirculatingstrains`** — comparative genetic and evolutionary analysis of circulating
+   sequences for a given segment against a reference vaccine strain (Smithburn, MP-12 or
+   Clone 13). Produces alignments, a maximum-likelihood phylogeny (IQ-TREE), selection
+   analysis (HyPhy FEL/FUBAR/SLAC), strain typing/SNP calls, and a time-calibrated
+   phylogeography (TreeTime).
+2. **`rvfvmutationalprofiling`** — mutational profiling of circulating sequences against the
+   ZH548 reference strain, including host-associated sequence-context (APOBEC-like editing
+   signature) analysis.
+3. **`rvfvphylocontinuous`** — continuous phylogeographic analysis (geocoding, divergence
+   dating) of a segment's sequence set.
+
+## Requirements
+
+To **run** the pipeline you need, at minimum:
+
+- [Nextflow](https://www.nextflow.io/docs/latest/getstarted.html) `>=19.10.0` (developed and
+  tested with `23.04`)
+- One of: [Singularity](https://docs.sylabs.io/guides/latest/user-guide/)/[Apptainer](https://apptainer.org/)
+  (recommended, and typically what's available on HPC clusters), Docker, or Conda/Mamba
+- Java 11+ (required by Nextflow)
+
+You do **not** need `conda`, `bioconda`, or `singularity`/`apptainer` themselves to be
+buildable or installable on your laptop — they only need to be usable on whichever machine
+actually executes the pipeline (see below).
 
 ## Installation
 
-**rvfvphylo** runs on UNIX/LINUX systems. You will install Miniconda3 from [here](https://docs.conda.io/en/latest/miniconda.html). Once Miniconda3 has been installed, proceed with pipeline installation
-
-```
+```bash
 git clone https://github.com/ajodeh-juma/rvfv-circulating-strains.git
 cd rvfv-circulating-strains
-conda env create -n rvfv-phylo -f environment.yml
-conda activate rvfv-phylo
 ```
 
+How you go from here depends on where the pipeline will actually run.
+
+### Option A — HPC with Singularity/Apptainer (recommended)
+
+This is the supported way to run the pipeline when your local machine (e.g. macOS, or any
+system without root/Singularity support) cannot install Conda environments or build/run
+Singularity containers. All of the compute happens on the HPC cluster; your laptop is only
+used to edit files and submit the job.
+
+1. Copy (or `git clone` directly on) the cluster:
+
+   ```bash
+   rsync -avP --exclude=".git" --exclude="work" --exclude="output-dir" \
+     ./rvfv-circulating-strains <user>@<hpc-login-node>:~/projects/pipelines/
+   ```
+
+2. Log in to the HPC and load (or install) Nextflow and Singularity/Apptainer. Cluster module
+   names vary by site — check with `module avail nextflow singularity apptainer`, e.g.:
+
+   ```bash
+   module load nextflow
+   module load singularity   # or: module load apptainer
+   ```
+
+   If no `nextflow` module exists, install it into a lightweight conda env (only Nextflow
+   itself, none of the pipeline's tools):
+
+   ```bash
+   conda create -n nextflow -c bioconda nextflow=23.04
+   conda activate nextflow
+   ```
+
+3. Run with `-profile singularity`. On first run, Nextflow will automatically pull the
+   required per-process Singularity images from
+   [Galaxy Depot](https://depot.galaxyproject.org/singularity/) /
+   [Biocontainers](https://quay.io/organization/biocontainers) and cache them under
+   `work/singularity` — no manual container build step is needed:
+
+   ```bash
+   nextflow run main.nf -profile singularity --help
+   ```
+
+See [Running on an HPC cluster (SLURM)](#running-on-an-hpc-cluster-slurm) for a full example
+submission workflow.
+
+### Option B — Local installation with Conda
+
+Use this only on a system where Conda/Bioconda packages install and run natively (Linux is
+best supported; some tools in `environment.yml` are not available for macOS/arm64).
+
+```bash
+conda env create -n rvfv-phylo -f environment.yml
+conda activate rvfv-phylo
+nextflow run main.nf -profile conda --help
+```
+
+## Running on an HPC cluster (SLURM)
+
+Nextflow submits and supervises each process as its own cluster job, so the `nextflow run`
+command itself must keep running for the whole pipeline duration. On a SLURM cluster there
+are two common ways to do that:
+
+**1. Run Nextflow from a persistent session on the login node**, letting it submit
+`sbatch` jobs for each process:
+
+```bash
+# on the login node
+screen -S rvfvphylo   # or: tmux new -s rvfvphylo
+
+module load nextflow singularity
+export NXF_OPTS='-Xms1g -Xmx4g'
+
+nextflow run main.nf \
+    -profile singularity \
+    --subworkflow rvfvcirculatingstrains \
+    --fasta data/RVFV-M.fasta \
+    --metadata data/RVFV-M.csv \
+    --segment M \
+    --prefix riftM \
+    --start 20 --end 3611 \
+    --vaccine_reference DQ380208 \
+    --outliers assets/RVFV-M-outliers-circulating.txt \
+    --outdir output-dir/riftM \
+    -work-dir work/riftM \
+    -resume
+
+# detach with Ctrl-A D (screen) / Ctrl-B D (tmux); check back later with:
+#   screen -r rvfvphylo   or   tmux attach -t rvfvphylo
+```
+
+This requires an `executor { name = 'slurm' }` (or equivalent) entry so that individual
+processes are submitted to the scheduler instead of running on the login node — add a
+site-specific config, e.g. `conf/hpc.config`:
+
+```groovy
+process {
+  executor = 'slurm'
+  queue    = 'batch'          // replace with your cluster's partition/queue name
+}
+executor {
+  queueSize = 20
+}
+```
+
+and include it on the command line with `-c conf/hpc.config` (or add it to `nextflow.config`
+under its own profile) alongside `-profile singularity`.
+
+**2. Submit the whole Nextflow head process as a single batch job** (simplest, but ties up
+one job allocation for the full pipeline runtime):
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=rvfvphylo
+#SBATCH --output=rvfvphylo.%j.log
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=4G
+#SBATCH --time=48:00:00
+
+module load nextflow singularity
+
+nextflow run main.nf -profile singularity -c conf/hpc.config \
+    --subworkflow rvfvcirculatingstrains \
+    --fasta data/RVFV-M.fasta \
+    --metadata data/RVFV-M.csv \
+    --segment M --prefix riftM --start 20 --end 3611 \
+    --vaccine_reference DQ380208 \
+    --outliers assets/RVFV-M-outliers-circulating.txt \
+    --outdir output-dir/riftM -work-dir work/riftM -resume
+```
+
+submitted with `sbatch run_rvfvphylo.sbatch`. In both cases, `-resume` lets you re-launch the
+same command after a failure or a walltime cut-off without recomputing already-finished
+steps.
+
+## Quick start
+
+Show all pipeline options:
+
+```bash
+nextflow run main.nf --help
+```
+
+Show all options, including advanced/hidden ones:
+
+```bash
+nextflow run main.nf --help --show_hidden_params
+```
 
 ## Usage
 
-For minimal pipeline options, use the ```--help``` flag e.g. 
+1. **`rvfvcirculatingstrains`** — genetic and phylogenetic analysis of the M segment against
+   the MP-12 vaccine strain:
 
-```nextflow run main.nf --help```
+   ```bash
+   BASEDIR="${HOME}/projects/vaccine-and-circulating-strains-analysis/segments/M/complete/global"
 
-To see all the options, use the ```--show_hidden_params``` flag e.g.
+   nextflow run main.nf \
+       -profile singularity \
+       --subworkflow rvfvcirculatingstrains \
+       --fasta ${BASEDIR}/merged-sequences/RVFV-M.fasta \
+       --metadata ${BASEDIR}/merged-sequences/RVFV-M.csv \
+       --segment M \
+       --prefix riftM \
+       --start 20 \
+       --end 3611 \
+       --remove_duplicates false \
+       --lineages ${BASEDIR}/assignment/output-dir/report/lineages.csv \
+       --vaccine_reference DQ380208 \
+       --outliers ./assets/RVFV-M-outliers-circulating.txt \
+       --recombinants ./assets/rvfv-M-potential-recombinants.txt \
+       --outdir ./output-dir/riftM \
+       -work-dir ./work/riftM \
+       -resume
+   ```
 
-```nextflow run main.nf --help --show_hidden_params```
+2. **`rvfvmutationalprofiling`** — should follow step 1. Profiles mutations against the
+   ZH548 reference strain:
 
-1. A typical command to perform genetic and phylogenetic analysis on then M
-(medium) segment with the MP-12 strain as reference is shown as:
+   ```bash
+   nextflow run main.nf \
+       -profile singularity \
+       --subworkflow rvfvmutationalprofiling \
+       --fasta ${BASEDIR}/merged-sequences/rvfv-M.fasta \
+       --metadata ${BASEDIR}/merged-sequences/rvfv-M.csv \
+       --segment M \
+       --prefix riftM \
+       --start 20 \
+       --end 3611 \
+       --remove_duplicates false \
+       --lineages ${BASEDIR}/assignment/output-dir/report/lineages.csv \
+       --vaccine_reference NC_014396 \
+       --outliers ./assets/RVFV-M-outliers-circulating.txt \
+       --recombinants ./assets/rvfv-M-potential-recombinants.txt \
+       --outdir ./output-dir/mutational-profiling/riftM \
+       -work-dir ./work/mutational-profiling/riftM \
+       -resume
+   ```
 
-```
-BASEDIR="${HOME}/projects/vaccine-and-circulating-strains-analysis/segments/M/complete/global"
+   Then use `bin/getSequenceContexts.py` to extract sequence contexts from the alignments,
+   and `scripts/plots.R` to render the summary figures.
 
-```
-```
-nextflow run main.nf \
-    --subworkflow rvfvcirculatingstrains \
-    --fasta ${BASEDIR}/merged-sequences/RVFV-M.fasta \
-    --metadata ${BASEDIR}/merged-sequences/RVFV-M.csv \
-    --segment M \
-    --prefix riftM \
-    --start 20 \
-    --end 3611 \
-    --remove-duplicates false \
-    --lineages ${BASEDIR}/assignment/output-dir/report/lineages.csv \
-    --vaccine_reference DQ380208 \
-    --outliers ./assets/RVFV-M-outliers-circulating.txt \
-    --recombinants ./assets/rvfv-M-potential-recombinants.txt \
-    --outdir ./output-dir/riftM \
-    -work-dir ./work/riftM \
-    -resume
-```
+Swap `-profile singularity` for `-profile conda` if running under Option B, or
+`-profile docker` if Docker is available instead.
 
-2. This should be folowed by mutational profiling where the ZH548 is used a
-   reference sequence.
+## Parameters
 
-A typical command on the analysis of the (medium) segment sequnces againts ZH548
-strain is shown as:
-
-```
-nextflow run main.nf \
-    --subworkflow rvfvmutationalprofiling \
-    --fasta ${BASEDIR}/merged-sequences/rvfv-M.fasta \
-    --metadata ${BASEDIR}/merged-sequences/rvfv-M.csv \
-    --segment M \
-    --prefix riftM \
-    --start 20 \
-    --end 3611 \
-    --remove-duplicates false \
-    --lineages ${BASEDIR}/assignment/output-dir/report/lineages.csv \
-    --vaccine_reference NC_014396 \
-    --outliers ./assets/RVFV-M-outliers-circulating.txt \
-    --recombinants ./assets/rvfv-M-potential-recombinants.txt \
-    --outdir ./output-dir/mutational-profiling/riftM \
-    -work-dir ./work/mutational-profiling/riftM \
-    -resume
-```
-
-## Method details
-
-The pipeline offers several parameters including as highlighted:
-
-```
+```text
 Input/output options
-  --subworkflow                [string]  Subworkflow type. options are 'rvfvcirculatingstrains', 'rvfvphylocontinuous' and 'rvfvmutationalprofiling'
-  --fasta                      [string]  Input Fasta file containing the sequences
-  --metadata                   [string]  Input comma-separated values (csv) metadata file containing the columns 'sample_name' and  'Ct.
-  --recombinants               [string]  Input text file containing recombinant sequence accessions and the the column 'recombinants'
-  --segment                    [string]  genomic segment of the virus. options are 'S', 'M' and 'L'
-  --outdir                     [string]  The output directory where the results will be saved. [default: ./results]
-  --email                      [string]  Email address for completion summary.
+  --subworkflow        [string]  'rvfvcirculatingstrains', 'rvfvmutationalprofiling' or 'rvfvphylocontinuous'
+  --fasta              [string]  Input FASTA file containing the sequences
+  --metadata           [string]  Input CSV metadata file (requires 'sample_name' and 'Ct' columns)
+  --recombinants       [string]  Input text file of recombinant sequence accessions (column 'recombinants')
+  --segment            [string]  Genomic segment: 'S-NSS', 'S-NP', 'M' or 'L'
+  --outdir             [string]  Output directory [default: ./results]
+  --email              [string]  Email address for completion summary
 
 Alignment masking options
-  --start                      [integer] start position to trim alignment (0-based index)
-  --end                        [integer] end position to trim alignment (0-based index) [default: 20]
+  --start              [integer] Start position to trim the alignment (0-based)
+  --end                [integer] End position to trim the alignment (0-based)
 
 Alignment filtering options
-  --outliers                   [string]  Input text file containing sequence identifiers for outlier sequences The identifiers should be in the format of the 
-                                         reformatted headers as generated by REFORMAT_HEADERS process 
+  --outliers           [string]  Text file of outlier sequence identifiers (reformatted headers, as
+                                  generated by the REFORMAT_HEADERS process)
 
-strain characterization options
-  --lineages                   [string]  Input text file in CSV format (generatated by rvfvtyper pipeline) containing lineage information.
-  --vaccine_reference          [string]  Reference accession to the vaccine strain (these accession should be in your sequence dataset)
-  --grouping_column            [string]  Column to use to for grouping of sequences [default: strain_type]
-  --min_freq                   [number]  Minimum percentage of sequences required to support a SNP call [default: 0.2]
-  --max_freq                   [number]  Maximum percentage of sequences required to support a SNP call [default: 0.8]
-  --seq_type                   [string]  Sequence type either dna or protein [default: protein]
-  --snp_type                   [string]  SNP type, singleton (only a single snp per position), multiple (more than one snp per position) and conserved (snps tha 
-                                         occur commonly across all the sequences) [default: singleton] 
-  --group_per_lineage          [string]  Specify if you want group the stats output per lineage [default: false]
+Strain characterization options
+  --lineages           [string]  CSV lineage-assignment file (as generated by the rvfvtyper pipeline)
+  --vaccine_reference  [string]  Vaccine-strain reference accession (must be present in your sequence set)
+  --grouping_column    [string]  Column used to group sequences [default: strain_type]
+  --min_freq           [number]  Minimum frequency to support a SNP call [default: 0.2]
+  --max_freq           [number]  Maximum frequency to support a SNP call [default: 0.8]
+  --seq_type           [string]  'dna' or 'protein' [default: protein]
+  --snp_type           [string]  'singleton', 'multiple' or 'conserved' [default: singleton]
+  --group_per_lineage  [string]  Group the stats output per lineage [default: false]
 
-dataset filtering options
-  --filter_columns             [string]  Column names (separated by space) to be used as filter to exclude sequence records with no information on the specified 
-                                         columns: 'country', 'location', 'host', 'date'  [default: country date] 
+Dataset filtering options
+  --filter_columns     [string]  Space-separated metadata columns required to be populated
+                                  (e.g. 'country location host date') [default: location]
 
 Process skipping options
-  --skip_modeltesting          [boolean] Skip model tesing step using modeltest-ng.
+  --skip_modeltesting  [boolean] Skip the modeltest-ng model-selection step
 
+Execution profiles (-profile)
+  singularity                    Run every process in its own Singularity/Apptainer container (recommended for HPC)
+  docker                         Run every process in its own Docker container
+  conda                          Create/use a single Conda environment from environment.yml
+  test                           Minimal test configuration
 ```
+
+Run `nextflow run main.nf --help --show_hidden_params` for the complete, always up-to-date
+list (sourced from [`nextflow_schema.json`](nextflow_schema.json)).
 
 ## Output
 
-For ***rvfvcirculatingstrains** the typical outputs are as displayed in the tree
-structure below
+For **`rvfvcirculatingstrains`**, the typical outputs are laid out as:
 
-```
+```text
 output-dir/riftM/
 ├── alignment
-│   ├── riftM.log
-│   ├── riftM_align.fasta
-│   ├── riftM_dedup.fasta
-│   ├── riftM_dedup.txt
-│   ├── riftM_duplicated_taxa.txt
-│   ├── riftM_filtered.fasta
-│   ├── riftM_filtered.txt
-│   └── riftM_masked.fasta
+│   ├── riftM.log
+│   ├── riftM_align.fasta
+│   ├── riftM_dedup.fasta
+│   ├── riftM_dedup.txt
+│   ├── riftM_duplicated_taxa.txt
+│   ├── riftM_filtered.fasta
+│   ├── riftM_filtered.txt
+│   └── riftM_masked.fasta
 ├── hyphy
-│   ├── riftM.FEL.json
-│   ├── riftM.FEL.log
-│   ├── riftM.FUBAR.cache
-│   ├── riftM.FUBAR.json
-│   ├── riftM.FUBAR.log
-│   ├── riftM.SLAC.json
-│   └── riftM.SLAC.log
+│   ├── riftM.FEL.json
+│   ├── riftM.FEL.log
+│   ├── riftM.FUBAR.cache
+│   ├── riftM.FUBAR.json
+│   ├── riftM.FUBAR.log
+│   ├── riftM.SLAC.json
+│   └── riftM.SLAC.log
 ├── iqtree
-│   ├── riftM.bionj
-│   ├── riftM.iqtree
-│   └── riftM.treefile
+│   ├── riftM.bionj
+│   ├── riftM.iqtree
+│   └── riftM.treefile
 ├── models
-│   ├── riftM.model.ckp
-│   ├── riftM.model.log
-│   ├── riftM.model.out
-│   ├── riftM.model.topos
-│   └── riftM.model.tree
+│   ├── riftM.model.ckp
+│   ├── riftM.model.log
+│   ├── riftM.model.out
+│   ├── riftM.model.topos
+│   └── riftM.model.tree
 ├── phylogeo
-│   ├── riftM_dates.csv
-│   ├── riftM_geocoded.pdf
-│   ├── riftM_geocoded.txt
-│   └── riftM_geolocations.csv
+│   ├── riftM_dates.csv
+│   ├── riftM_geocoded.pdf
+│   ├── riftM_geocoded.txt
+│   └── riftM_geolocations.csv
 ├── pipeline_info
-│   ├── execution_report.html
-│   ├── execution_timeline.html
-│   ├── execution_trace.txt
-│   └── pipeline_dag.svg
+│   ├── execution_report.html
+│   ├── execution_timeline.html
+│   ├── execution_trace.txt
+│   └── pipeline_dag.svg
 ├── reformatted-sequences
-│   ├── riftM.fasta
-│   └── riftM.txt
+│   ├── riftM.fasta
+│   └── riftM.txt
 ├── sequences
-│   ├── riftM.csv
-│   └── riftM.fasta
+│   ├── riftM.csv
+│   └── riftM.fasta
 ├── strain-types
-│   ├── riftM.DQ380208.all.csv
-│   ├── riftM.DQ380208.per.lineage.csv
-│   ├── riftM.DQ380208.snps.csv
-│   ├── riftM.DQ380208.snps.pdf
-│   ├── riftM.DQ380208.txt
-│   ├── riftM.fasta
-│   ├── riftM.strain_type.DQ380208.amino.acid.fasta
-│   ├── riftM.strain_type.DQ380208.bcftools.stats.tstv.txt
-│   ├── riftM.strain_type.DQ380208.mutations.per.strain.singleton.csv
-│   ├── riftM.strain_type.DQ380208.parsed.bcftools.stats.csv
-│   ├── riftM.strain_type.DQ380208.singleton.txt
-│   ├── riftM.strain_type.DQ380208.snpSift.tstv.txt
-│   ├── riftM.strain_type.DQ380208.vcf
-│   ├── riftM.traits.txt
-│   ├── strain_type.DQ380208.sorted.alignment.all.labels.csv
-│   ├── strain_type.DQ380208.sorted.alignment.fasta
+│   ├── riftM.DQ380208.all.csv
+│   ├── riftM.DQ380208.per.lineage.csv
+│   ├── riftM.DQ380208.snps.csv
+│   ├── riftM.DQ380208.snps.pdf
+│   ├── riftM.DQ380208.txt
+│   ├── riftM.fasta
+│   ├── riftM.strain_type.DQ380208.amino.acid.fasta
+│   ├── riftM.strain_type.DQ380208.bcftools.stats.tstv.txt
+│   ├── riftM.strain_type.DQ380208.mutations.per.strain.singleton.csv
+│   ├── riftM.strain_type.DQ380208.parsed.bcftools.stats.csv
+│   ├── riftM.strain_type.DQ380208.singleton.txt
+│   ├── riftM.strain_type.DQ380208.snpSift.tstv.txt
+│   ├── riftM.strain_type.DQ380208.vcf
+│   ├── riftM.traits.txt
+│   ├── strain_type.DQ380208.sorted.alignment.all.labels.csv
+│   └── strain_type.DQ380208.sorted.alignment.fasta
 └── treetime
     ├── divergence_tree.nexus
     ├── riftM.log
     ├── riftM_ancestral_sequences.fasta
     ├── riftM_timetree.nexus
     └── trace_run.log
-
 ```
-For ***rvfvmutationalprofiling** the typical outputs are as displayed in the tree
-structure below
 
-```
+For **`rvfvmutationalprofiling`**, the typical outputs are laid out as:
+
+```text
+output-dir/mutational-profiling/riftM/
 ├── alignment
-│   ├── riftM.log
-│   ├── riftM.reverse.complement.fasta
-│   ├── riftM_align.fasta
-│   ├── riftM_dedup.fasta
-│   ├── riftM_dedup.txt
-│   ├── riftM_duplicated_taxa.txt
-│   ├── riftM_filtered.fasta
-│   ├── riftM_filtered.txt
-│   └── riftM_masked.fasta
+│   ├── riftM.log
+│   ├── riftM.reverse.complement.fasta
+│   ├── riftM_align.fasta
+│   ├── riftM_dedup.fasta
+│   ├── riftM_dedup.txt
+│   ├── riftM_duplicated_taxa.txt
+│   ├── riftM_filtered.fasta
+│   ├── riftM_filtered.txt
+│   └── riftM_masked.fasta
 ├── pipeline_info
-│   ├── execution_report.html
-│   ├── execution_timeline.html
-│   ├── execution_trace.txt
-│   └── pipeline_dag.svg
+│   ├── execution_report.html
+│   ├── execution_timeline.html
+│   ├── execution_trace.txt
+│   └── pipeline_dag.svg
 ├── reformatted-sequences
-│   ├── riftM.fasta
-│   └── riftM.txt
+│   ├── riftM.fasta
+│   └── riftM.txt
 ├── sequence-contexts
-│   ├── A3A_A3B.CT.riftM.context.txt
-│   ├── A3A_A3B.GA.riftM.context.txt
-│   ├── A3A_A3B.riftM.edited.sites.txt
-│   ├── A3C_A3F.CT.riftM.context.txt
-│   ├── A3C_A3F.GA.riftM.context.txt
-│   ├── A3C_A3F.riftM.edited.sites.txt
-│   ├── A3G.CT.riftM.context.txt
-│   ├── A3G.GA.riftM.context.txt
-│   ├── A3G.riftM.edited.sites.txt
-│   ├── antelope.CT.riftM.sequence-context.txt
-│   ├── antelope.GA.riftM.sequence-context.txt
-│   ├── bat.CT.riftM.sequence-context.txt
-│   ├── bat.GA.riftM.sequence-context.txt
-│   ├── buffalo.CT.riftM.sequence-context.txt
-│   ├── buffalo.GA.riftM.sequence-context.txt
-│   ├── cow.CT.riftM.sequence-context.txt
-│   ├── cow.GA.riftM.sequence-context.txt
-│   ├── human.CT.riftM.sequence-context.txt
-│   ├── human.GA.riftM.sequence-context.txt
-│   ├── mosquito.CT.riftM.sequence-context.txt
-│   ├── mosquito.GA.riftM.sequence-context.txt
-│   ├── riftM-CT-sequence-contexts-with-metadata.csv
-│   ├── riftM-GA-sequence-contexts-with-metadata.csv
-│   ├── riftM-sequence-contexts-with-metadata.csv
-│   ├── sheep.CT.riftM.sequence-context.txt
-│   └── sheep.GA.riftM.sequence-context.txt
+│   ├── A3A_A3B.CT.riftM.context.txt
+│   ├── A3A_A3B.GA.riftM.context.txt
+│   ├── A3A_A3B.riftM.edited.sites.txt
+│   ├── ... (per APOBEC-family editor, per host species: antelope, bat, buffalo, cow, human,
+│   │        mosquito, sheep)
+│   ├── riftM-CT-sequence-contexts-with-metadata.csv
+│   ├── riftM-GA-sequence-contexts-with-metadata.csv
+│   └── riftM-sequence-contexts-with-metadata.csv
 ├── sequences
-│   ├── riftM.csv
-│   └── riftM.fasta
+│   ├── riftM.csv
+│   └── riftM.fasta
 ├── strain-types
-│   ├── riftM.NC_014396.txt
-│   ├── riftM.fasta
-│   ├── riftM.strain_type.NC_014396.mutations.per.strain.singleton.csv
-│   ├── riftM.strain_type.NC_014396.singleton.txt
-│   ├── riftM.strain_type.NC_014396.vcf
-│   ├── riftM.traits.txt
-│   ├── strain_type.NC_014396.sorted.alignment.all.labels.csv
-│   └── strain_type.NC_014396.sorted.alignment.fasta
+│   ├── riftM.NC_014396.txt
+│   ├── riftM.fasta
+│   ├── riftM.strain_type.NC_014396.mutations.per.strain.singleton.csv
+│   ├── riftM.strain_type.NC_014396.singleton.txt
+│   ├── riftM.strain_type.NC_014396.vcf
+│   ├── riftM.traits.txt
+│   ├── strain_type.NC_014396.sorted.alignment.all.labels.csv
+│   └── strain_type.NC_014396.sorted.alignment.fasta
 └── strain-types-rev
-    ├── riftM.NC_014396.txt
-    ├── riftM.fasta
-    ├── riftM.strain_type.NC_014396.mutations.per.strain.singleton.csv
-    ├── riftM.strain_type.NC_014396.singleton.txt
-    ├── riftM.strain_type.NC_014396.vcf
-    ├── riftM.traits.txt
-    ├── strain_type.NC_014396.sorted.alignment.all.labels.csv
-    └── strain_type.NC_014396.sorted.alignment.fasta
+    └── (mirrors strain-types/, computed on the reverse-complement strand)
 ```
 
-3. Use the `bin/getSequenceContexts.py` to extract the sequence contexts of the
-   strands from the alignments. These can be visualized using the `plots.R` to
-   generate the figures.
+Use `bin/getSequenceContexts.py` to extract sequence contexts from the alignments, and
+`scripts/plots.R` to generate the summary figures from them.
+
+## Analysis examples
+
+[`analysis/vaccine-and-circulating-strains/`](analysis/vaccine-and-circulating-strains/README.md)
+is a worked, dataset-specific example that post-processes per-segment
+`rvfvcirculatingstrains` runs (root-to-tip plots, strain-type/lineage summaries, vaccine
+substitution tables) into manuscript-ready figures and tables.
 
 ## Credits
 
-rvfvphylo was originally written by ajodeh-juma.
+rvfvphylo was originally written by [ajodeh-juma](https://github.com/ajodeh-juma).
 
-## Contributions and Support
+## Contributions and support
 
-If you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).
+If you would like to contribute to this pipeline, please see the
+[contributing guidelines](.github/CONTRIBUTING.md). Issues and feature requests can be filed
+on the [issue tracker](https://github.com/ajodeh-juma/rvfv-circulating-strains/issues).
 
-For further information or help, don't hesitate to get in touch on [Slack](https://nfcore.slack.com/channels/rvfvcirculatingstrains) (you can join with [this invite](https://nf-co.re/join/slack)).
+## Citations
 
-## Citation
+<!-- If you use rvfvphylo for your analysis, please cite it using the following doi:
+[10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
 
-<!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi. -->
-<!-- If you use  rvfvphylo for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
-
-You can cite the `nf-core` publication as follows:
+This pipeline was built from the [nf-core](https://nf-co.re) pipeline template. If you use
+tooling from that template, please cite:
 
 > **The nf-core framework for community-curated bioinformatics pipelines.**
 >
-> Philip Ewels, Alexander Peltzer, Sven Fillinger, Harshil Patel, Johannes Alneberg, Andreas Wilm, Maxime Ulysse Garcia, Paolo Di Tommaso & Sven Nahnsen.
+> Philip Ewels, Alexander Peltzer, Sven Fillinger, Harshil Patel, Johannes Alneberg, Andreas
+> Wilm, Maxime Ulysse Garcia, Paolo Di Tommaso & Sven Nahnsen.
 >
-> _Nat Biotechnol._ 2020 Feb 13. doi: [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x).  
+> _Nat Biotechnol._ 2020 Feb 13. doi:
+> [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x).
 > ReadCube: [Full Access Link](https://rdcu.be/b1GjZ)
